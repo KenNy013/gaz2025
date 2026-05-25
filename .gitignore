@@ -1,0 +1,21 @@
+# Зависимости
+node_modules/
+**/node_modules/
+
+# Переменные окружения
+.env
+**/.env
+
+# Сборка
+dist/
+build/
+.next/
+
+# Логи и кэш
+*.log
+.eslintcache
+.vite/
+
+# Prisma
+/ADMIN/BACKEND/prisma/*.db
+/ADMIN/BACKEND/prisma/*.db-journal

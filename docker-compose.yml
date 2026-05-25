@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./BACKEND
+      dockerfile: Dockerfile
+    container_name: app_backend
+    ports:
+      - "3000:3000" # Проброс порта бэкенда наружу
+    env_file:
+      - ./BACKEND/.env # Передаем .env файл в контейнер!
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./FRONTEND
+      dockerfile: Dockerfile
+    container_name: app_frontend
+    ports:
+      - "80:80" # Nginx будет доступен на 80 порту (http://localhost)
+    depends_on:
+      - backend
+    restart: unless-stopped

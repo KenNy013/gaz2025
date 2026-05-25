@@ -1,0 +1,303 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: radial-gradient(circle at 10% 30%, #0B1120, #030614);
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  position: relative;
+  color: #f0f3fc;
+}
+
+
+/* ========== ТЕМЫ ФОНА ========== */
+/* Базовая тема (исходный тёмный фон) */
+body {
+  background: radial-gradient(circle at 20% 30%, #0B1120, #030614);
+  transition: background 0.5s ease;
+}
+
+/* Тема 1: Светлая */
+body.bg-light {
+  background: linear-gradient(145deg, #EFF3FF, #D9E2F5);
+}
+
+/* Тема 2: Синий динамичный */
+body.bg-blue-dynamic {
+  background: radial-gradient(circle at 70% 10%, #0040B0, #001438);
+}
+
+/* Тема 3: Карбон (тёмный с текстурой) */
+body.bg-carbon {
+  background: #111827;
+  background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 2px, transparent 2px, transparent 8px);
+}
+
+/* Тема 4: Тёплый градиент */
+body.bg-sunset {
+  background: linear-gradient(125deg, #2B1B3A, #1A2A4F, #0E1A2F);
+}
+
+/* Тема 5: Полупрозрачный с размытием (эффект стекла) */
+body.bg-glass {
+  background: #0a0f1f;
+  backdrop-filter: blur(2px);
+}
+
+
+/* --- правый фон с фургоном (Renault Master стилизация) --- */
+body::after {
+  content: "";
+  position: fixed;
+  right: 0;
+  top: 15%;
+  width: 45%;
+  background-size: contain;
+  background-position: right center;
+  opacity: 0.85;
+  z-index: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+}
+
+.car-image {
+  position: fixed;
+  right: 0;
+  top: 15%;
+  width: 45%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* --- контентный слой поверх фона --- */
+.h1, hr, #createSection, #statusSection, #questionSection {
+  position: relative;
+  z-index: 5;
+}
+
+/* контейнер для кнопок */
+.h1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.b1 {
+  background: rgba(20, 30, 55, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 130, 246, 0.5);
+  padding: 0.8rem 1.8rem;
+  border-radius: 60px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.b1:hover {
+  background: #1E5AF7;
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -8px #1e5af770;
+}
+
+.b1:active {
+  transform: translateY(1px);
+}
+
+hr {
+  display: none;
+  /* скрываем линию, она не нужна в дизайне */
+}
+
+/* общие карточки для всех секций */
+#createSection, #statusSection, #questionSection {
+  background: rgba(18, 25, 45, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 2rem;
+  padding: 2rem 2rem 2.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  border: 1px solid rgba(66, 153, 225, 0.3);
+  box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s;
+}
+
+h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #FFF, #BFDBFE);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  display: inline-block;
+}
+
+/* стилизация форм и полей */
+form label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #e2edff;
+  font-size: 0.95rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(72, 144, 232, 0.6);
+  border-radius: 60px;
+  font-size: 1rem;
+  color: white;
+  margin-top: 0.4rem;
+  outline: none;
+  font-family: inherit;
+  transition: 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+textarea {
+  border-radius: 24px;
+  resize: vertical;
+}
+
+/* специальный стиль для поля "Госномер" в форме статуса – добавляем круглую метку слева */
+#statusForm label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#statusForm label::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+#statusForm input {
+  flex: 1;
+  margin-top: 0;
+}
+
+/* кнопка "Проверить" в форме статуса – синяя, как в макете */
+#statusForm button[type="submit"] {
+  background: linear-gradient(95deg, #1E5AF7, #0F3FCC);
+  border: none;
+  border-radius: 60px;
+  padding: 0.8rem 1.8rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+  width: 100%;
+  margin-top: 0.5rem;
+  box-shadow: 0 8px 18px -6px #1e5af7;
+}
+
+#statusForm button[type="submit"]:hover {
+  background: linear-gradient(95deg, #3270FF, #1350E0);
+  transform: translateY(-2px);
+}
+
+/* кнопки в других формах */
+#applicationForm button, #questionForm button {
+  background: linear-gradient(95deg, #1E5AF7, #0F3FCC);
+  border: none;
+  border-radius: 60px;
+  padding: 0.8rem 2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 0.8rem;
+  width: auto;
+  min-width: 180px;
+  box-shadow: 0 8px 18px -6px #1e5af7;
+}
+
+#applicationForm button:hover, #questionForm button:hover {
+  transform: translateY(-2px);
+  background: #3270FF;
+}
+
+/* стили для select */
+select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+/* результат вывода */
+#createResult, #statusResult, #questionResult {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.8rem;
+  border-radius: 28px;
+  color: #c7e0ff;
+  backdrop-filter: blur(4px);
+}
+
+/* адаптивность: на узких экранах фургон убираем, карточки занимают всю ширину */
+@media (max-width: 900px) {
+  body::after {
+    opacity: 0.2;
+    width: 100%;
+    top: auto;
+    bottom: 0;
+  }
+  #createSection, #statusSection, #questionSection {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  body::before {
+    font-size: 0.85rem;
+    top: 1rem;
+    left: 1rem;
+    background-size: 22px;
+    padding-left: 30px;
+  }
+}
+
+/* анимация появления секций плавная */
+#createSection, #statusSection, #questionSection {
+  transition: opacity 0.25s ease, transform 0.2s;
+}
+
+/* улучшение для поля file */
+input[type="file"] {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 60px;
+  padding: 0.6rem;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "gaz-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install && npm install --prefix BACKEND && npm install --prefix FRONTEND/ADMIN && npm install --prefix FRONTEND/CLIENT",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:prisma\" \"npm run start:admin\" \"npm run start:client\"",
+    "start:backend": "npm run dev --prefix BACKEND",
+    "start:prisma": "npx prisma studio --prefix BACKEND",
+    "start:admin": "npm run dev --prefix FRONTEND/ADMIN",
+    "start:client": "npm run dev --prefix FRONTEND/CLIENT",
+    "build:all": "npm run build --prefix FRONTEND/CLIENT && npm run build --prefix FRONTEND/ADMIN"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

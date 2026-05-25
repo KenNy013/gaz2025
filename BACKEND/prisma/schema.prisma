@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Application {
+  id        String   @id @default(uuid())
+  plate     String   @unique
+  vin       String   @unique
+  firstName String
+  lastName  String
+  phone     String
+  email     String
+  carModel  String
+  photos    String
+  status    String   @default("WAITING")
+  message   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Admin {
+  id        String @id @default(uuid())
+  login     String @unique
+  password  String
+  firstName String
+  lastName  String
+}
+
+model Inquiry {
+  id        String   @id @default(uuid())
+  name      String   // Имя клиента
+  phone     String   // Телефон
+  email     String   // Email
+  message   String   // Сам вопрос
+  isRead    Boolean  @default(false) // Прочитано ли админом
+  createdAt DateTime @default(now())
+}
+

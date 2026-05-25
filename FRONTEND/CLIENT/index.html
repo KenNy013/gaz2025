@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./style/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ГАЗ – Клиент</title>
+</head>
+
+<body>
+
+  <!-- Выбор действия -->
+  <div class="h1">
+    <button class="b1" id="showCreateFormBtn">Подать заявку</button>
+    <button class="b1" id="showStatusFormBtn">Проверить статус</button>
+    <button class="b1" id="showQuestionFormBtn">Задать вопрос</button>
+    <button class="b1" id="bgToggleBtn">Сменить фон</button>
+  </div>
+
+
+
+  <!-- Блок создания заявки (изначально видим) -->
+  <div id="createSection">
+    <h2>Новая заявка на ТО</h2>
+    <form id="applicationForm">
+      <label>Госномер: <input type="text" name="plate" required placeholder="А123ВС177"></label><br>
+      <label>VIN: <input type="text" name="vin" required
+               placeholder="1HGCM82633A123456"></label><br>
+      <label>Имя: <input type="text" name="firstName" required placeholder="Иван"></label><br>
+      <label>Фамилия: <input type="text" name="lastName" required placeholder="Иванов"></label><br>
+      <label>Телефон: <input type="tel" name="phone" required
+               placeholder="+7(999)123-45-67"></label><br>
+      <label>Email: <input type="email" name="email" required
+               placeholder="ivanov@example.com"></label><br>
+      <label>Марка/модель: <select name="carModel" id="carModel" required>
+          <option value="">Выберите модель</option>
+
+        </select><br>
+        <label>Фотографии (до 3, jpg/png):
+          <input type="file" name="photos" multiple accept="image/jpeg,image/png">
+        </label>
+        <br><br>
+        <button type="submit">Отправить заявку</button>
+    </form>
+    <div id="createResult" style="margin-top: 10px;"></div>
+  </div>
+
+  <!-- Блок проверки статуса (изначально скрыт) -->
+  <div id="statusSection" style="display: none;">
+    <h2>Проверить статус заявки</h2>
+    <form id="statusForm">
+      <label>Госномер: <input type="text" id="statusPlate" required placeholder="А123ВС177"></label>
+      <button type="submit">Проверить</button>
+    </form>
+    <div id="statusResult" style="margin-top: 10px;"></div>
+  </div>
+
+
+  <div id="questionSection" style="display: none;">
+    <h2>Задать вопрос специалисту</h2>
+    <form id="questionForm">
+      <label>Ваше имя: <input type="text" name="name" required placeholder="Иван"></label><br>
+      <label>Контактный Email: <input type="email" name="email" required
+               placeholder="ivanov@example.com"></label><br>
+      <label>Ваш вопрос:<br>
+        <textarea name="question" required style="width: 300px; height: 100px;"></textarea>
+      </label><br>
+      <button type="submit">Отправить вопрос</button>
+    </form>
+    <div id="questionResult" style="margin-top: 10px;"></div>
+  </div>
+
+  <div class="car-image">
+    <img src="./img/car.png" alt="Car Image">
+  </div>
+
+  <script type="module" src="./app/index.js"></script>
+</body>
+
+</html>
