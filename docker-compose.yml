@@ -2,23 +2,22 @@ version: '3.8'
 
 services:
   backend:
-    build:
-      context: ./BACKEND
-      dockerfile: Dockerfile
-    container_name: app_backend
-    ports:
-      - "3000:3000" # Проброс порта бэкенда наружу
+    build: ./BACKEND
+    container_name: backend-container
     env_file:
-      - ./BACKEND/.env # Передаем .env файл в контейнер!
+      - ./BACKEND/.env
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./BACKEND/dev.db:/app/dev.db
+      - ./BACKEND/prisma:/app/prisma
     restart: unless-stopped
 
   frontend:
-    build:
-      context: ./FRONTEND
-      dockerfile: Dockerfile
-    container_name: app_frontend
+    build: ./FRONTEND
+    container_name: frontend-container
     ports:
-      - "80:80" # Nginx будет доступен на 80 порту (http://localhost)
+      - "80:80" # Открыт только один порт для всего!
     depends_on:
       - backend
     restart: unless-stopped
